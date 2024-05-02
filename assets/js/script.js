@@ -77,7 +77,7 @@ function createTaskCard(task) {
   return taskCard;
 }
 
-// Todo: create a function to render the task list and make cards draggable
+// create a function to render the task list and make cards draggable
 function renderTaskList() {
   const tasks = readTasksFromStorage();
 
@@ -91,7 +91,7 @@ function renderTaskList() {
   const doneList = $('#done-cards');
   doneList.empty();
 
-  // TODO: Loop through projects and create project cards for each status
+  // Loop through projects and create project cards for each status
   for (let task of tasks) {
     if (task.status === 'to-do') {
       todoList.append(createTaskCard(task));
@@ -120,22 +120,45 @@ function renderTaskList() {
   });
 }
 
-// Todo: create a function to handle adding a new task **********************************************
+// create a function to handle adding a new task
 function handleAddTask(event){
   event.preventDefault();
 
   // gets the project name, type, and due date from the form
-  const taskTitle =taskNameInputEl.val().trim();
-  const taskDueDate =taskNameInputEl.val()
-  const taskDescription =taskNameInputEl.val()
+  const taskTitle = taskNameInputEl.val().trim();
+  const taskDueDate = taskDueDateInputEl.val();
+  const taskDescription = taskDescriptionInputEl.val();
+
+  / ? Create a new project object with the data from the form
+  const newProject = {
+    /* ? Here we use a tool called `crypto` to generate a random id for our task.
+     This is a unique identifier that we can use to find the task in the array. 
+     `crypto` is a built-in module that we can use in the browser and Nodejs. */
+    id: crypto.randomUUID(),
+    taskName: taskTitle,
+    dueDate: taskDueDate,
+    description: taskDescription,
+    status: 'to-do',
+  };
+
+//Pull the projects from localStorage and push the new project to the array
+const tasks = readTaskFromStorage();
+tasks.push(newTask);
+
+// ? Save the updated projects array to localStorage
+saveTasksToStorage(tasks);
+
+// ? Print project data back to the screen
+renderTaskList();
+
+// Clear the form inputs
+taskNameInputEl.val('');
+taskDueDateInputEl.val('');
+taskDescriptionInputEl.val('');
+
 }
 
-const taskNameInputEl = $('#task-name-input');
-const taskDueDateInputEl = $('#task-due-date-input')
-const taskDescriptionInputEl = $('#task-description-input')
-
-
-// Todo: create a function to handle deleting a task
+// create a function to handle deleting a task
 function handleDeleteTask(event){
 const taskId = $(this).attr('data-task-id');
 const tasks = readTaskFromStorage();
@@ -148,7 +171,7 @@ const tasks = readTaskFromStorage();
   renderTaskList();
 }
 
-// Todo: create a function to handle dropping a task into a new status lane
+// create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
   // Reads task from local storage
   const tasks = readTaskFromStorage()
@@ -168,7 +191,7 @@ function handleDrop(event, ui) {
   renderTaskList();
 }
 
-// Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
+// when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
     renderTaskList();
 
