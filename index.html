@@ -34,7 +34,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="taskModalLabel">Add New Task</h5> // need to remove this one of line 28
+            <h5 class="modal-title" id="taskModalLabel">New Task Card</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -47,18 +47,15 @@
 
 
               <label for="deadline">Deadline:</label>
-              <input type="text" id="task-due-date-input" placeholder="Task Due Date" autocomplete="off" id="taskDueDate">
+              <input type="text" id="taskDueDate" autocomplete="off" placeholder="Task Due Date" autocomplete="off" id="taskDueDate">
 
               <label for="description">Description:</label>
               <input type="text" id="task-description-input" placeholder="Task Description">
 
               <!-- Other task-related input fields -->
-              <button type="submit">Add</button>
+              <button type="submit" class="btn btn-success">Add Task</button>
+              
             </form>
-          </div>
-
-          <div>
-            <button type="submit" class="btn btn-custom">Add Task</button>
           </div>
 
         </div>
@@ -105,6 +102,7 @@
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 

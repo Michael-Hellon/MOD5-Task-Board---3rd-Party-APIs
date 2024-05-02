@@ -1,9 +1,8 @@
 const taskFormEl = $('#task-form');
 const taskTitleEl = $('#task-title');
-const taskDueDateE1 = $('#task-due-date');
 const taskDescription = $('task-description');
 const taskNameInputEl = $('#task-name-input');
-const taskDueDateInputEl = $('#task-due-date-input')
+const taskDateInputEl = $('#taskDueDate')
 const taskDescriptionInputEl = $('#task-description-input')
 
 
@@ -16,7 +15,7 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 function readTaskFromStorage() {
   let taskList = JSON.parse(localStorage.getItem('tasks'));
   if(!tasklist) {
-    taskList = []1;
+    taskList = 1;
   }
   return taskList;
 }
@@ -25,7 +24,7 @@ function readTaskFromStorage() {
 function readNextIdFromStorage() {
   let nextId = JSON.parse(localStorage.getItem('nextId'));
   if(!nextId) {
-    nextId = 1;
+    nextId = [];
   } else {
     nextId++; 
   }
@@ -33,7 +32,7 @@ function readNextIdFromStorage() {
   return nextId;
 }
 
-//  a function that accepts an array of tasks, stringifys them, and saves them in localStorage.
+//  a function that accepts an array of tasks, stringify them, and saves them in localStorage.
 function saveTasksToStorage(taskList) {
   localStorage.setItem('tasks', JSON.stringify(taskList));
 }
@@ -126,17 +125,17 @@ function handleAddTask(event){
 
   // gets the project name, type, and due date from the form
   const taskTitle = taskNameInputEl.val().trim();
-  const taskDueDate = taskDueDateInputEl.val();
+  const taskDate = taskDateInputEl.val();
   const taskDescription = taskDescriptionInputEl.val();
 
-  / ? Create a new project object with the data from the form
-  const newProject = {
+  // ? Create a new project object with the data from the form
+  const newTask = {
     /* ? Here we use a tool called `crypto` to generate a random id for our task.
      This is a unique identifier that we can use to find the task in the array. 
      `crypto` is a built-in module that we can use in the browser and Nodejs. */
     id: crypto.randomUUID(),
     taskName: taskTitle,
-    dueDate: taskDueDate,
+    dueDate: taskDate,
     description: taskDescription,
     status: 'to-do',
   };
@@ -153,7 +152,7 @@ renderTaskList();
 
 // Clear the form inputs
 taskNameInputEl.val('');
-taskDueDateInputEl.val('');
+taskDateInputEl.val('');
 taskDescriptionInputEl.val('');
 
 }
@@ -186,7 +185,7 @@ function handleDrop(event, ui) {
       task.status = newStatus;
     }
   }
-  // ? Save the updated projects array to localStorage (overwritting the previous one) and render the new project data to the screen.
+  // ? Save the updated projects array to localStorage (overwriting the previous one) and render the new project data to the screen.
   localStorage.setItem('tasks', JSON.stringify(tasks));
   renderTaskList();
 }
@@ -196,7 +195,7 @@ $(document).ready(function () {
     renderTaskList();
 
     // calendar
-    $('#task-due-date').datepicker({
+    $('#taskDueDate').datepicker({
       changeMonth: true,
       changeYear: true,
     });
