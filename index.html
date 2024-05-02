@@ -16,15 +16,56 @@
 </head>
 
 <body>
+
   <header class="p-4 mb-4 text-center border-bottom border-5">
     <h1 class="display-3">Task Board</h1>
     <p class="lead">A simple Kanban board for task management</p>
   </header>
+  
+
   <div class="container">
     <div class="text-center mb-5">
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
     <!-- Todo: Create a modal with a form to add tasks -->
+  
+    <!-- The modal -->
+    <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="taskModalLabel">Add New Task</h5> // need to remove this one of line 28
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <!-- Your task input form here -->
+            <form>
+
+              <label for="task">Task</label>
+              <input type="text" placeholder="Task Title">
+
+
+              <label for="deadline">Deadline:</label>
+              <input type="text" placeholder="Task Due Date" autocomplete="off" id="taskDueDate">
+
+              <label for="description">Description:</label>
+              <input type="text" placeholder="Task Description">
+
+              <!-- Other task-related input fields -->
+              <button type="submit">Add</button>
+            </form>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-custom">Add Task</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
         <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
