@@ -14,8 +14,8 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 // If there are no tasks in localStorage, initialize an empty array and return it.
 function readTaskFromStorage() {
   let taskList = JSON.parse(localStorage.getItem('tasks'));
-  if(!tasklist) {
-    taskList = 1;
+  if(!taskList) {
+    taskList = [];
   }
   return taskList;
 }
@@ -24,7 +24,7 @@ function readTaskFromStorage() {
 function readNextIdFromStorage() {
   let nextId = JSON.parse(localStorage.getItem('nextId'));
   if(!nextId) {
-    nextId = [];
+    nextId = 1;
   } else {
     nextId++; 
   }
@@ -78,7 +78,7 @@ function createTaskCard(task) {
 
 // create a function to render the task list and make cards draggable
 function renderTaskList() {
-  const tasks = readTasksFromStorage();
+  const tasks = readTaskFromStorage();
 
   // ? Empty existing project cards out of the lanes
   const todoList = $('#todo-cards');
@@ -117,13 +117,14 @@ function renderTaskList() {
       });
     },
   });
+
 }
 
 // create a function to handle adding a new task
 function handleAddTask(event){
   event.preventDefault();
 
-  // gets the project name, type, and due date from the form
+  // gets the task name, type, and due date from the form
   const taskTitle = taskNameInputEl.val().trim();
   const taskDate = taskDateInputEl.val();
   const taskDescription = taskDescriptionInputEl.val();
@@ -206,3 +207,5 @@ $(document).ready(function () {
       drop: handleDrop,
     });
 });
+
+taskFormEl.on('submit', handleAddTask)
