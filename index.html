@@ -16,21 +16,18 @@
 </head>
 
 <body>
-
   <header class="p-4 mb-4 text-center border-bottom border-5">
     <h1 class="display-3">Task Board</h1>
     <p class="lead">A simple Kanban board for task management</p>
   </header>
-  
 
   <div class="container">
     <div class="text-center mb-5">
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
-    <!-- Todo: Create a modal with a form to add tasks -->
   
-    <!-- The modal -->
-    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+<!-- beginning of modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -42,18 +39,17 @@
             <!-- Your task input form here -->
             <form id="task-form">
 
-              <label for="task">Task</label>
-              <input type="text" id="task-name-input" placeholder="Task Title">
+              <label for="task-title">Task</label>
+              <input type="text" id="task-title" placeholder="Task Title">
 
 
-              <label for="deadline">Deadline:</label>
-              <input type="text" id="taskDueDate" autocomplete="on" placeholder="Task Due Date" class="form-control">
+              <label for="task-due-date">Task Due Date:</label>
+              <input type="text" class="form-control" id="task-due-date" placeholder="MM/DD/YYYY" autocomplete="off" >
 
-              <label for="description">Description:</label>
-              <input type="text" id="task-description-input" placeholder="Task Description">
+              <label for="task-description">Task Description:</label>
+              <input type="text" id="task-description" placeholder="Task Description">
 
-              <!-- Other task-related input fields -->
-              <button type="submit" class="btn btn-success">Add Task</button>
+              <button type="submit" id="submit" class="btn btn-success">Add Task</button>
               
             </form>
           </div>
@@ -61,7 +57,7 @@
         </div>
       </div>
     </div>
-
+<!-- end of modal -->
     
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
