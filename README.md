@@ -3,7 +3,7 @@ Create a task board
 
 ## Description
 
-For this week’s project I was would create a simple task board using several API's and libraries. As tasks are entered, a card will be dynamically created on the page an placed in the 'To DO' column. The card will be red if the due date is past, yellow if they are due today, and white if they are due in the future. These cards can be dragged from column to column. The cards can be deleted once they have been completed. This will allow the user or a team to manage tasks. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery and bootstrap.
+For this week’s project I would create a simple task board using several API's and libraries. As tasks are entered, a card will be dynamically created on the page an placed in the 'To DO' column. The card will be red if the due date is past, yellow if they are due today, and white if they are due in the future. These cards can be dragged from column to column. The cards can be deleted once they have been completed. This will allow the user or a team to manage tasks. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery and bootstrap.
 
 - My main motivation for this project was to see how well I knew how to use third-party API as well as Jquery, Bootstrap and Dayjs.
 - I built this project to test my knowledge on how much I have learned about API's, Jquery, and Bootstrap.
